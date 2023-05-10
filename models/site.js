@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../dbconnexion.js');
+const state = require('../utils/states.js');
 
 const Site = db.define('Site', {
     id: {
@@ -9,5 +10,9 @@ const Site = db.define('Site', {
     },
     codeSite: { type: DataTypes.STRING },
     libelleSite: { type: DataTypes.STRING },
+    state: {
+        type: DataTypes.INTEGER,
+        defaultValue: state.ENABLED
+    }
 });
 module.exports = Site;

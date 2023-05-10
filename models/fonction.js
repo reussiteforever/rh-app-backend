@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../dbconnexion.js');
+const state = require('../utils/states.js');
 
 const Fonction = db.define('Fonction', {
     id: {
@@ -9,5 +10,9 @@ const Fonction = db.define('Fonction', {
     },
     codeFonction: { type: DataTypes.STRING },
     libelleFonction: { type: DataTypes.STRING },
+    state: {
+        type: DataTypes.INTEGER,
+        defaultValue: state.ENABLED
+    }
 });
 module.exports = Fonction;

@@ -1,13 +1,13 @@
 const express = require('express');
-const Personne = require('../models/personne.js');
+const Contrat = require('../models/contrat.js');
 const router = express.Router();
 const state = require('../utils/states.js');
 
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const personnes = await Personne.findAll();
-        res.status(200).json(personnes);
+        const contrats = await Contrat.findAll();
+        res.status(200).json(contrats);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const {id} = req.params;
-        const personne = await Personne.findByPk(id);
-        res.status(200).json(personne);
+        const contrat = await Contrat.findByPk(id);
+        res.status(200).json(contrat);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -27,8 +27,8 @@ router.get("/:id", async (req, res) => {
 // INSERT ONE
 router.post("/", async (req, res) => {
     try {
-        const personne = await Personne.create(req.body);
-        res.status(200).json(personne);
+        const contrat = await Contrat.create(req.body);
+        res.status(200).json(contrat);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -39,8 +39,8 @@ router.post("/", async (req, res) => {
     try {
         const currentState = req.params;
         let value = currentState==0? state.ARCHIVED : state.ENABLED;
-        const personne = await Personne.update({ state: value });
-        res.status(200).json(personne);
+        const contrat = await Contrat.update({ state: value });
+        res.status(200).json(contrat);
     } catch (error) {
         res.status(500).json({message: error.message});
     }

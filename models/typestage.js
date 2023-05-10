@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../dbconnexion.js');
+const state = require('../utils/states.js');
 
 const TypeStage = db.define('TypeStage', {
     id: {
@@ -7,7 +8,11 @@ const TypeStage = db.define('TypeStage', {
         autoIncrement: true,
         primaryKey: true
     },
-    libelleTypeStage: { type: DataTypes.STRING }
+    libelleTypeStage: { type: DataTypes.STRING },
+    state: {
+        type: DataTypes.INTEGER,
+        defaultValue: state.ENABLED
+    }
 });
 
 module.exports = TypeStage;
