@@ -20,10 +20,18 @@ const TypeStage = require('./models/typestage.js');
  */
 const personnesRoutes = require('./routes/personne.js');
 const contratRoutes = require('./routes/contrat.js');
+const departementRoutes = require('./routes/departement.js');
+const fonctionRoutes = require('./routes/fonction.js');
+const serviceRoutes = require('./routes/service.js');
+const siteRoutes = require('./routes/site.js');
+const stageRoutes = require('./routes/stage.js');
+const typecontratRoutes = require('./routes/typecontrat.js');
+const typestageRoutes = require('./routes/typestage.js');
+
 /**
  * UTILITIES IMPORTATION
  */
-const state = require('./utils/states.js');
+// const state = require('./utils/states.js');
 
 
 //call of connection function
@@ -54,7 +62,8 @@ async function synchro() {
     db.Stage= Stage;
     db.TypeContrat= TypeContrat;
     db.TypeStage= TypeStage;
-    await db.sync();
+    // await db.sync({ force: true }); // This creates the table, dropping it first if it already existed 
+    await db.sync(); // This creates the table if it doesn't exist (and does nothing if it already exists)
 }
 synchro();
 
@@ -64,3 +73,10 @@ synchro();
 app.use(express.json());
 app.use("/personne", personnesRoutes);
 app.use("/contrat", contratRoutes);
+app.use("/departement", departementRoutes);
+app.use("/service", serviceRoutes);
+app.use("/site", siteRoutes);
+app.use("/stage", stageRoutes);
+app.use("/typecontrat", typecontratRoutes);
+app.use("/typestage", typestageRoutes);
+app.use("/fonction", fonctionRoutes);

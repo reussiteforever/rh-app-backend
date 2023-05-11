@@ -1,13 +1,13 @@
 const express = require('express');
-const Contrat = require('../models/contrat.js');
+const Departement = require('../models/departement.js');
 const router = express.Router();
 const state = require('../utils/states.js');
 
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const contrats = await Contrat.findAll();
-        res.status(200).json(contrats);
+        const departements = await Departement.findAll();
+        res.status(200).json(departements);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const {id} = req.params;
-        const contrat = await Contrat.findByPk(id);
-        res.status(200).json(contrat);
+        const departement = await Departement.findByPk(id);
+        res.status(200).json(departement);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -27,20 +27,32 @@ router.get("/:id", async (req, res) => {
 // INSERT ONE
 router.post("/", async (req, res) => {
     try {
-        const contrat = await Contrat.create(req.body);
-        res.status(200).json(contrat);
+        const departement = await Departement.create(req.body);
+        res.status(200).json(departement);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+});
+
+//UPDATE ONE
+router.patch("/:id", async (req, res) => {
+    try {
+        const {id} = req.params;
+        const departement = await Departement.update(req.body, {where:{id:id}});
+        res.status(200).json(departement);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 });
 
 //ARCHIVED OR ENABLED ONE
-router.post("/", async (req, res) => {
+router.patch("/:id/state/:state", async (req, res) => {
     try {
-        const currentState = req.params;
+        const id = req.params.id;
+        const currentState = req.params.state;
         let value = currentState==0? state.ARCHIVED : state.ENABLED;
-        const contrat = await Contrat.update({ state: value });
-        res.status(200).json(contrat);
+        const result = await Departement.update({ state: value }, {where:{id:id}});
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json({message: error.message});
     }

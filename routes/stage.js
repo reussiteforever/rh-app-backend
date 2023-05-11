@@ -1,13 +1,13 @@
 const express = require('express');
-const Contrat = require('../models/contrat.js');
+const Stage = require('../models/stage.js');
 const router = express.Router();
 const state = require('../utils/states.js');
 
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const contrats = await Contrat.findAll();
-        res.status(200).json(contrats);
+        const stages = await Stage.findAll();
+        res.status(200).json(stages);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const {id} = req.params;
-        const contrat = await Contrat.findByPk(id);
-        res.status(200).json(contrat);
+        const stage = await Stage.findByPk(id);
+        res.status(200).json(stage);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -27,19 +27,18 @@ router.get("/:id", async (req, res) => {
 // INSERT ONE
 router.post("/", async (req, res) => {
     try {
-        const contrat = await Contrat.create(req.body);
-        res.status(200).json(contrat);
+        const stage = await Stage.create(req.body);
+        res.status(200).json(stage);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 });
-
 //UPDATE ONE
 router.patch("/:id", async (req, res) => {
     try {
         const {id} = req.params;
-        const contrat = await Contrat.update(req.body, {where:{id:id}});
-        res.status(200).json(contrat);
+        const stage = await Stage.update(req.body, {where:{id:id}});
+        res.status(200).json(stage);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -51,12 +50,11 @@ router.patch("/:id/state/:state", async (req, res) => {
         const id = req.params.id;
         const currentState = req.params.state;
         let value = currentState==0? state.ARCHIVED : state.ENABLED;
-        const result = await Contrat.update({ state: value }, {where:{id:id}});
+        const result = await Stage.update({ state: value }, {where:{id:id}});
         res.status(200).json(result);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 });
-
 
 module.exports = router;
