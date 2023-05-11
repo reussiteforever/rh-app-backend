@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-
+// DESKTOP-IV3TUO8
 //Connection To SQL Server database
 const sequelize = new Sequelize('projetrh', 'sa', 'Cestmonvrainom1', {
     host: 'TGOCL0268V48', // Put appropriate host name
