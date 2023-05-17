@@ -71,12 +71,12 @@ synchro();
  * using routes in the server
  */
 app.use(express.json());
-app.use("/personne", personnesRoutes);
-app.use("/contrat", contratRoutes);
-app.use("/departement", departementRoutes);
-app.use("/service", serviceRoutes);
-app.use("/site", siteRoutes);
-app.use("/stage", stageRoutes);
-app.use("/typecontrat", typecontratRoutes);
-app.use("/typestage", typestageRoutes);
-app.use("/fonction", fonctionRoutes);
+app.use("/api/personne", personnesRoutes);
+app.use("/api/contrat", contratRoutes);
+app.use("/api/departement", departementRoutes);
+app.use("/api/service", serviceRoutes);
+app.use("/api/site", siteRoutes);
+app.use("/api/stage", stageRoutes);
+app.use("/api/typecontrat", typecontratRoutes);
+app.use("/api/typestage", typestageRoutes);
+app.use("/api/fonction", fonctionRoutes);
