@@ -2,18 +2,14 @@ const { DataTypes } = require('sequelize');
 const db = require('../dbconnexion.js');
 const state = require('../utils/states.js');
 
-const Contrat = db.define('Contrat', {
+const Alerte = db.define('Alerte', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    dateDebut: { type: DataTypes.DATE },
-    dateFin: { type: DataTypes.DATE },
-    state: {
-        type: DataTypes.INTEGER,
-        defaultValue: state.ENABLED
-    }
+    dateEnvoie: {type: DataTypes.DATE},
+    statutEnvoie: {type: DataTypes.INTEGER}
 });
 
-module.exports = Contrat;
+module.exports = Alerte;

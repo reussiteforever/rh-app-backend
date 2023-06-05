@@ -20,3 +20,14 @@ You must set the followings :
 - the user's password for connection.
 
 4. You can run up the server by making : `npm start`.
+
+# Issues
+
+## If you encounter an error saying`listen EADDRINUSE: address already in use` while running this server, you can do this to resolve it.
+
+- If you are on windows, type `netstat -ano|findstr "PID: 3000"`. 
+You must get an output ending by `... LISTENING XXXX` where XXXX is a number of any digits.
+Here the server is running on port 3000, type yours accordingly.
+
+- Next you should kill the running service by doing 
+`taskkill /pid XXXX /f` where XXXX is the number got above.

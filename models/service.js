@@ -10,7 +10,6 @@ const Service = db.define('Service', {
     },
     codeService: { type: DataTypes.STRING },
     libelleService: { type: DataTypes.STRING },
-    idDepartement: { type: DataTypes.INTEGER },
     state: {
         type: DataTypes.INTEGER,
         defaultValue: state.ENABLED
