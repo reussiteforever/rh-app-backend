@@ -1,8 +1,10 @@
+// https://stackoverflow.com/questions/25577248/node-js-mssql-tedius-connectionerror-failed-to-connect-to-localhost1433-conn
+
 const { Sequelize } = require('sequelize');
-// DESKTOP-IV3TUO8
 //Connection To SQL Server database
 const sequelize = new Sequelize('projetrh', 'sa', 'Cestmonvrainom1', {
-    host: 'TGOCL0268V48', // Put appropriate host name
+    host: 'REUSSITEFOREVER', // Put appropriate host name
+    // host: 'TGOCL0268V48', // Put appropriate host name
     dialect: 'mssql', // Put the dialect that you're working with
     dialectOptions: {
         options: {
