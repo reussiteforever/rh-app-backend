@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
-app.use(cors()) // Use this after the variable declaration
+const cors = require('cors');
+const assoc = require('./associations');
+
+app.use(cors()); // Use this after the variable declaration
+app.use(express.json());
 
 // Connexion to the database
 const db = require('./dbconnexion.js');
@@ -72,7 +75,6 @@ synchro();
 /**
  * using routes in the server
  */
-app.use(express.json());
 app.use("/api/personne", personnesRoutes);
 app.use("/api/contrat", contratRoutes);
 app.use("/api/departement", departementRoutes);
