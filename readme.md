@@ -23,11 +23,8 @@ You must set the followings :
 
 # Issues
 
-## If you encounter an error saying`listen EADDRINUSE: address already in use` while running this server, you can do this to resolve it.
+### If you encounter an error saying`listen EADDRINUSE: address already in use` while running this server, you can do this to resolve it.
 
-- If you are on windows, type `netstat -ano|findstr "PID: 3000"`. 
-You must get an output ending by `... LISTENING XXXX` where XXXX is a number of any digits.
-Here the server is running on port 3000, type yours accordingly.
+- If you are on windows, type `netstat -ano|findstr "PID: 3000"`. You must get an output ending by `... LISTENING XXXX` where XXXX is a number of any digits. Here the server is running on port 3000, type yours accordingly. Next you should kill the running service by doing `taskkill /pid XXXX /f` where XXXX is the number got above.
 
-- Next you should kill the running service by doing 
-`taskkill /pid XXXX /f` where XXXX is the number got above.
+- On MAC/Linux, do `lsof -i tcp:3000`. Next make `kill -9 PID`.

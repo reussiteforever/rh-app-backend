@@ -6,7 +6,11 @@ const state = require('../utils/states.js');
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const departements = await Departement.findAll();
+        const departements = await Departement.findAll({
+            where: {
+                state: 0
+            }
+        });
         res.status(200).json(departements);
     } catch (error) {
         res.status(500).json({message: error.message});

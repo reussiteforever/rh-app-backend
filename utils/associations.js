@@ -1,13 +1,13 @@
-const Site = require("./models/site");
-const Departement = require("./models/departement");
-const Service = require("./models/service");
-const Stage = require("./models/stage");
-const Contrat = require("./models/contrat");
-const Alerte = require("./models/alerte");
-const Fonction = require("./models/fonction");
-const Personne = require("./models/personne");
-const TypeContrat = require("./models/typecontrat");
-const TypeStage = require("./models/typestage");
+const Site = require("../models/site");
+const Departement = require("../models/departement");
+const Service = require("../models/service");
+const Stage = require("../models/stage");
+const Contrat = require("../models/contrat");
+const Alerte = require("../models/alerte");
+const Fonction = require("../models/fonction");
+const Personne = require("../models/personne");
+const TypeContrat = require("../models/typecontrat");
+const TypeStage = require("../models/typestage");
 
 // Function for making One-To-Many Associations between Models
 function makeAssociation(source, target) {

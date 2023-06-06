@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const assoc = require('./associations');
+
+/**
+ * UTILITIES IMPORTATION
+ */
+const assoc = require('./utils/associations');
+const data = require('./utils/dataCreator');
 
 app.use(cors()); // Use this after the variable declaration
 app.use(express.json());
@@ -34,10 +39,17 @@ const typecontratRoutes = require('./routes/typecontrat.js');
 const typestageRoutes = require('./routes/typestage.js');
 
 /**
- * UTILITIES IMPORTATION
+ * using routes in the server
  */
-// const state = require('./utils/states.js');
-
+app.use("/api/personne", personnesRoutes);
+app.use("/api/contrat", contratRoutes);
+app.use("/api/departement", departementRoutes);
+app.use("/api/service", serviceRoutes);
+app.use("/api/site", siteRoutes);
+app.use("/api/stage", stageRoutes);
+app.use("/api/typecontrat", typecontratRoutes);
+app.use("/api/typestage", typestageRoutes);
+app.use("/api/fonction", fonctionRoutes);
 
 //call of connection function
 testConnexion();
@@ -71,16 +83,3 @@ async function synchro() {
     await db.sync(); // This creates the table if it doesn't exist (and does nothing if it already exists)
 }
 synchro();
-
-/**
- * using routes in the server
- */
-app.use("/api/personne", personnesRoutes);
-app.use("/api/contrat", contratRoutes);
-app.use("/api/departement", departementRoutes);
-app.use("/api/service", serviceRoutes);
-app.use("/api/site", siteRoutes);
-app.use("/api/stage", stageRoutes);
-app.use("/api/typecontrat", typecontratRoutes);
-app.use("/api/typestage", typestageRoutes);
-app.use("/api/fonction", fonctionRoutes);

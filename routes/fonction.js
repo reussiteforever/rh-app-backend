@@ -6,7 +6,11 @@ const state = require('../utils/states.js');
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const fonctions = await Fonction.findAll();
+        const fonctions = await Fonction.findAll({
+            where: {
+                state: 0
+            }
+        });
         res.status(200).json(fonctions);
     } catch (error) {
         res.status(500).json({message: error.message});

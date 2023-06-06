@@ -6,7 +6,11 @@ const state = require('../utils/states.js');
 //GET ALL
 router.get("/", async (req, res) => {
     try {
-        const typestages = await TypeStage.findAll();
+        const typestages = await TypeStage.findAll({
+            where: {
+                state: 0
+            }
+        });
         res.status(200).json(typestages);
     } catch (error) {
         res.status(500).json({message: error.message});
