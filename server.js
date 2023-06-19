@@ -6,7 +6,7 @@ const cors = require('cors');
  * UTILITIES IMPORTATION
  */
 const assoc = require('./utils/associations');
-const data = require('./utils/dataCreator');
+// const data = require('./utils/dataCreator');
 
 app.use(cors()); // Use this after the variable declaration
 app.use(express.json());
