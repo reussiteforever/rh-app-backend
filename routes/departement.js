@@ -2,6 +2,7 @@ const express = require('express');
 const Departement = require('../models/departement.js');
 const router = express.Router();
 const state = require('../utils/states.js');
+const Site = require('../models/site.js');
 
 //GET ALL
 router.get("/", async (req, res) => {
@@ -9,7 +10,8 @@ router.get("/", async (req, res) => {
         const departements = await Departement.findAll({
             where: {
                 state: 0
-            }
+            },
+            include: Site
         });
         res.status(200).json(departements);
     } catch (error) {
