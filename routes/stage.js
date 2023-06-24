@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
         const stages = await Stage.findAll({
             where: {
                 state: 0
-            }
+            },
+            include: { all: true, nested: true }
         });
         res.status(200).json(stages);
     } catch (error) {

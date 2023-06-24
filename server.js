@@ -79,7 +79,7 @@ async function synchro() {
     db.Stage= Stage;
     db.TypeContrat= TypeContrat;
     db.TypeStage= TypeStage;
-    // await db.sync({ force: true }); // This creates the table, dropping it first if it already existed 
-    await db.sync(); // This creates the table if it doesn't exist (and does nothing if it already exists)
+    await db.sync({ force: true }); // This creates the table, dropping it first if it already existed 
+    // await db.sync(); // This creates the table if it doesn't exist (and does nothing if it already exists)
 }
 synchro();

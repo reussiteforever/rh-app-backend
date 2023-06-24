@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
         const contrats = await Contrat.findAll({
             where: {
                 state: 0
-            }
+            },
+            include: { all: true, nested: true }
         });
         res.status(200).json(contrats);
     } catch (error) {

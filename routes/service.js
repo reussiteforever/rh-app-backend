@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
         const services = await Service.findAll({
             where: {
                 state: 0
-            }
+            },
+            include: { all: true, nested: true }
         });
         res.status(200).json(services);
     } catch (error) {
