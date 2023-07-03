@@ -8,8 +8,8 @@ const Stage = db.define('Stage', {
         autoIncrement: true,
         primaryKey: true
     },
-    dateDebut: { type: DataTypes.DATE },
-    dateFin: { type: DataTypes.DATE },
+    dateDebut: { type: DataTypes.DATEONLY },
+    dateFin: { type: DataTypes.DATEONLY },
     responsableStage: { type: DataTypes.STRING },
     state: {
         type: DataTypes.INTEGER,
