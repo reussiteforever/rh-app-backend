@@ -16,7 +16,7 @@ const Personne = db.define('Personne', {
     nom: { type: DataTypes.STRING },
     prenom: { type: DataTypes.STRING },
     raisonSociale: { type: DataTypes.STRING },
-    Matricule: { type: DataTypes.STRING },
+    matricule: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING },
     telephone: { type: DataTypes.STRING },
     adresse: { type: DataTypes.STRING },
