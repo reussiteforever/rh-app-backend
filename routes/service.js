@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
             where: {
                 state: 0
             },
-            include: { all: true, nested: true }
+            include: { all: true}
         });
         res.status(200).json(services);
     } catch (error) {
